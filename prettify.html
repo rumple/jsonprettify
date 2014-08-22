@@ -1,0 +1,31 @@
+<html>
+<head>
+<style>
+#jsonop { white-space: pre; font-family: monospace; }
+</style>
+<script>
+prettify = function() {
+  var jsonop = document.getElementById("jsonop");
+  var jsonin = document.getElementById("jsontext").value;
+  var obj;
+  jsonop.innerHTML = "";
+  try {
+    obj = JSON.parse(jsonin);
+    jsonop.appendChild(document.createTextNode(JSON.stringify(obj, null, 4)));
+  } catch(err) {
+    return;
+  }
+}
+</script>
+<title>JSON Prettifier</title>
+</head>
+<body>
+<h1>JSON Prettifier</h1>
+Type or paste JSON text<br/>
+<textarea id="jsontext" rows="10" cols="50" onkeyup="prettify()"></textarea><br/>
+<button type="button" onclick="prettify()">Prettify!</button>
+<h1>JSON Output</h1>
+<div id="jsonop">No Input</div>
+
+</body>
+</html>
